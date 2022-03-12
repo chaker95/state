@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";  
+import Divcomponement from './componement/div'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class Porfolio extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            counter: 0,
+            show: false,
+            ImageSrc: <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyEHEEyMLM7NwLf6GRRi0kqc85pl-Baq58DQ&usqp=CAU"/>,
+            fullname: "Chaker Amri",
+            bio: "i'm astudent at Gomycode",
+            Profession: " My profesion full stack Js",
+        };
+    }
+    handleShow = () => {
+        this.setState({ ...this.state, show: !this.state.show });
+         setInterval (()=>{this.setState(prevState => ({  counter : prevState.counter + 1  })); } ,3000 )  ; 
+   };
+    render() {
+        return (
+            <div>
+                <center>
+
+                    <button style={{marginTop:'80px'}} onClick={this.handleShow}>{!this.state.show ? 'show' : 'hide'} </button>
+                    {this.state.show ? (
+                      <Divcomponement/>
+                    ) : null}
+                </center>
+            </div>
+        );
+    }
 }
-
-export default App;
+export default Porfolio;
