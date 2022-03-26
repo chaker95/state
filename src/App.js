@@ -1,5 +1,5 @@
-import React from "react";  
-import Divcomponement from './componement/div'
+import React from "react";
+import Divcomponement from "./componement/div";
 
 class Porfolio extends React.Component {
     constructor(props) {
@@ -7,25 +7,33 @@ class Porfolio extends React.Component {
         this.state = {
             counter: 0,
             show: false,
-            ImageSrc: <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyEHEEyMLM7NwLf6GRRi0kqc85pl-Baq58DQ&usqp=CAU"/>,
+            ImageSrc: <img src="https://t.ly/fXMM" />,
             fullname: "Chaker Amri",
-            bio: "i'm astudent at Gomycode",
+            bio: "i'm a student at Gomycode",
             Profession: " My profesion full stack Js",
         };
     }
     handleShow = () => {
         this.setState({ ...this.state, show: !this.state.show });
-         setInterval (()=>{this.setState(prevState => ({  counter : prevState.counter + 1  })); } ,3000 )  ; 
-   };
+    };
+
+    componentDidMount = () => {
+        setInterval(() => {
+            this.setState({ ...this.state, counter: this.state.counter + 1 });
+        }, 1000);
+    };
+
     render() {
         return (
             <div>
                 <center>
-
-                    <button style={{marginTop:'80px'}} onClick={this.handleShow}>{!this.state.show ? 'show' : 'hide'} </button>
-                    {this.state.show ? (
-                      <Divcomponement/>
-                    ) : null}
+                    <button
+                        style={{ marginTop: "80px" }}
+                        onClick={this.handleShow}
+                    >
+                        {!this.state.show ? "show" : "hide"}{" "}
+                    </button>
+                    {this.state.show ? <Divcomponement state={this.state} /> : null}
                 </center>
             </div>
         );
